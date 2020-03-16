@@ -9,16 +9,16 @@ Code for a creating dockerized Flask REST API with MySQL and Flask-SQLAlchemy
 
 ## Getting Started
 
-- git clone https://github.com/mahyadeh/rest-api-test.git
+- git clone -b nginx https://github.com/mahyadeh/rest-api-test.git
 - cd rest-api
 - docker-compose up --build
 - docker-compose down (to stop containers)
 
 To access:
-  From your broswer:
-  localhost:6000/api/v1/
+  From your broswer open:
+  https://localhost:8443/api/v1/
   or
-  curl localhost:6000/api/v1/
+  curl https://localhost:8443/api/v1/
 
 ## Data persistence
 - Uses local volume (db-data) to persist database info from the mysql container.
@@ -51,38 +51,37 @@ There are 2 main types(tables):
                    body: String,
                    cust_id (FOREIGN KEY)
                  }
- 
-There is a on-to-many relationship from Customer to Certificate
-
+               
 # API Methods:
  ### 1. Create customer:
-       curl  -H "Content-Type: application/json"   -X POST  -d '{"email":"user1@mail.com", "username":"user1", "password":"randomPass1","certs":""}' localhost:6000/api/v1/customer
+       curl  -H "Content-Type: application/json"   -X POST  -d '{"email":"user1@mail.com", "username":"user1", "password":"randomPass1","certs":""}' https://localhost:8443/api/v1/customer
 
  ### 2. View all customers
-     curl  localhost:6000/api/v1/customers
+     curl  https://localhost:8443/api/v1/customers
 
  ### 3. Delete customer
-     curl  -X DELETE localhost:6000/api/v1/customer/<customername>
+     curl  -X DELETE https://localhost:8443/api/v1/customer/<customername>
 
 
  ### 4. Update customer info (only email and password)
-    curl -H "Content-Type: application/json" -d '{"email":"newemail@mail.com", "password":"Newpassword1"}'   -X PUT localhost:6000/api/v1/customer/<customername>
+    curl -H "Content-Type: application/json" -d '{"email":"newemail@mail.com", "password":"Newpassword1"}'   -X PUT https://localhost:8443/api/v1/customer/<customername>
 
 
  ### 5. Create certificate (customer must already exist)
-    curl -H "Content-Type: application/json"   -X POST  -d '{"status":"active", "privKey":"randomKey", "body":"randomBody"}' localhost:6000/api/v1/customer/<customername>/cert
+    curl -H "Content-Type: application/json"   -X POST  -d '{"status":"active", "privKey":"randomKey", "body":"randomBody"}' https://localhost:8443/api/v1/customer/<customername>/cert
 
  ### 6.  Get all customer certificates (active and deactive)
-    curl  localhost:6000/api/v1/customer/<customername>/certs
+    curl  https://localhost:8443/api/v1/customer/<customername>/certs
 
  ### 7. Get all customer ACTIVE certificates
-    curl  localhost:6000/api/v1/customer/<customername>/certs/active
+    curl  https://localhost:8443/api/v1/customer/<customername>/certs/active
 
  ### 8. Activate csutomer certificate
-    curl -X PUT localhost:6000/api/v1/customer/<customername>/certs/activate/<certID>
+    curl -X PUT https://localhost:8443/api/v1/customer/<customername>/certs/activate/<certID>
 
  ### 9. Deactivate customer certificae
-    curl -X PUT localhost:6000/api/v1/customer/<customername>/certs/deactivate/<certID>   
+    curl -X PUT https://localhost:8443/api/v1/customer/<customername>/certs/deactivate/<certID>            
+
 
 ### Repository Contents
 
@@ -96,4 +95,8 @@ There is a on-to-many relationship from Customer to Certificate
 - `requirements.txt` - list of python package dependencies the application requires
 - `README.md` - README file
 - `db-data/` - local volume (mounted to mysql container) for data persistence
+- `nginx/Dockerfile` - Dockefile for nginx service
+- `nginx/nginx.conf` - config file for nginx
+- `nginx/nginx.cert` - self signed certificate 
+- `nginx/nginx.key` - key for self signed certificate 
 
