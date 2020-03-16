@@ -1,0 +1,33 @@
+version: '3'
+services:
+  app:
+    build: .
+    container_name: flask_app
+    environment:
+      # set database credentials
+      DB_HOST: mysql
+      DB_NAME: flask
+      DB_USER: flask
+      DB_PASSWORD: testpassword
+    links:
+      - mysql
+    depends_on:
+      # build the db first
+      - mysql
+    ports:
+      # bind on  port 6000 on host ( to flask app on port 5000)
+      - "6000:5000"
+
+  mysql:
+    container_name: flask_mysql
+    image: mysql:5.7
+    volumes:
+#        # Mount local directory to the mysql container to persist data
+      - ./database-data:/var/lib/mysql
+    environment:
+      # MySQL credentials
+      MYSQL_ROOT_PASSWORD: testpassword
+      MYSQL_DATABASE: flask
+      MYSQL_USER: flask
+      MYSQL_PASSWORD: testpassword
+
