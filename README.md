@@ -75,16 +75,16 @@ There are 2 main types(tables):
     curl -H "Content-Type: application/json"   -X POST  -d '{"status":"active", "privKey":"randomKey", "body":"randomBody"}' https://localhost:8443/api/v1/customer/<customername>/cert
 
  ### 7.  Get all customer certificates (active and deactive)
-    curl  https://localhost:8443/api/v1/customer/<customername>/certs
+    curl  https://localhost:8443/api/v1/customer/<customername>/cert
 
  ### 8. Get all customer ACTIVE certificates
-    curl  https://localhost:8443/api/v1/customer/<customername>/certs/active
+    curl  https://localhost:8443/api/v1/customer/<customername>/cert/active
 
  ### 9. Activate csutomer certificate
-    curl -X PUT https://localhost:8443/api/v1/customer/<customername>/certs/activate/<certID>
+    curl -X PUT https://localhost:8443/api/v1/customer/<customername>/cert/activate/<certID>
 
  ### 10. Deactivate customer certificae
-    curl -X PUT https://localhost:8443/api/v1/customer/<customername>/certs/deactivate/<certID>            
+    curl -X PUT https://localhost:8443/api/v1/customer/<customername>/cert/deactivate/<certID>            
 
 
 ### Repository Contents
