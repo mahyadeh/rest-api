@@ -57,31 +57,33 @@ There is a on-to-many relationship from Customer to Certificate
 # API Methods:
  ### 1. Create customer:
        curl  -H "Content-Type: application/json"   -X POST  -d '{"email":"user1@mail.com", "username":"user1", "password":"randomPass1","certs":""}' localhost:6000/api/v1/customer
-
- ### 2. View all customers
+ ### 2. Get customer:
+    curl  -X GET https://localhost:8443/api/v1/customer/<customername>
+    
+ ### 3. View all customers
      curl  -X GET localhost:6000/api/v1/customer
 
- ### 3. Delete customer
+ ### 4. Delete customer
      curl  -X DELETE localhost:6000/api/v1/customer/<customername>
 
 
- ### 4. Update customer info (only email and password)
+ ### 5. Update customer info (only email and password)
     curl -H "Content-Type: application/json" -d '{"email":"newemail@mail.com", "password":"Newpassword1"}'   -X PUT localhost:6000/api/v1/customer/<customername>
 
 
- ### 5. Create certificate (customer must already exist)
+ ### 6. Create certificate (customer must already exist)
     curl -H "Content-Type: application/json"   -X POST  -d '{"status":"active", "privKey":"randomKey", "body":"randomBody"}' localhost:6000/api/v1/customer/<customername>/cert
 
- ### 6.  Get all customer certificates (active and deactive)
+ ### 7.  Get all customer certificates (active and deactive)
     curl  localhost:6000/api/v1/customer/<customername>/cert
 
- ### 7. Get all customer ACTIVE certificates
+ ### 8. Get all customer ACTIVE certificates
     curl  localhost:6000/api/v1/customer/<customername>/cert/active
 
- ### 8. Activate csutomer certificate
+ ### 9. Activate csutomer certificate
     curl -X PUT localhost:6000/api/v1/customer/<customername>/cert/activate/<certID>
 
- ### 9. Deactivate customer certificae
+ ### 20. Deactivate customer certificae
     curl -X PUT localhost:6000/api/v1/customer/<customername>/cert/deactivate/<certID>   
 
 ### Repository Contents
