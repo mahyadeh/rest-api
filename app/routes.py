@@ -142,7 +142,7 @@ def create_cert(customername):
   #extract info from request
   data = request.get_json()
   c_status = data['status']
-  c_privKey = data['key']
+  c_privKey = data['privKey']
   c_body = data['body']
 
   try:
