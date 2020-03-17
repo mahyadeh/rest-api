@@ -42,6 +42,4 @@ services:
       - app
 
 #volumes:
-#  # for persistence
-#  mysql-data:
-#    driver: local
+#  mysql-db:
