@@ -102,3 +102,4 @@ There is a on-to-many relationship from Customer to Certificate
 
 # ToDo improvements:
 Add method to delete single certificate for customer
+Request real certificate from CA 
