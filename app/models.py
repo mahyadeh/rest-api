@@ -24,12 +24,12 @@ class User(db.Model):
         raise AssertionError('Password must be at least 5 characters')
       
       #Store password hash in database
-      self.password_hash = generate_password_hash(password)
-      return self.password_hash
+      self.password = generate_password_hash(password)
+      return self.password
 
     #to verify password
     def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
+        return check_password_hash(self.password, password)
 
     @validates('email') 
     def validate_email(self, key, email):
@@ -54,7 +54,7 @@ class User(db.Model):
                          unique=True,
                          nullable=False)    
     
-    password_hash = db.Column(db.String(120),
+    password = db.Column(db.String(120),
                          index=False,
                          unique=False,
                          nullable=False)                         
