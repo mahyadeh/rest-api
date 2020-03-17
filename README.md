@@ -4,8 +4,8 @@ Code for a creating dockerized Flask REST API with MySQL and Flask-SQLAlchemy
 
 ## Requirements
 
-- Docker
-- Docker Compose
+- docker
+- docker-compose
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ To access:
 - Certificate private keys for certificates can be passed as string to the API call. It will be encoded to bytes before being stored in the database (type is BLOB)
 
 
-## API USGAE
+## API Ref
 There are 2 main types(tables):
 
 # 
@@ -97,3 +97,6 @@ There is a on-to-many relationship from Customer to Certificate
 - `README.md` - README file
 - `db-data/` - local volume (mounted to mysql container) for data persistence
 
+
+# ToDo improvements:
+Add method to delete single certificate for customer
