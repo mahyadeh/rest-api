@@ -49,7 +49,7 @@ def get_customer(customername):
     cust = User.query.filter_by(username=customername).first_or_404(description='There is no record for user:  {}'.format(customername))
    
     
-    return make_response(f"info for {cust.username}: email: {cust.email}, password: {cust.password_hash},  certs: {[c.id for c in cust.certs]} ")
+    return make_response(f"info for {cust.username}: email: {cust.email}, password: {cust.password},  certs: {[c.id for c in cust.certs]} ")
    except Exception as e:
      reason=str(e)
      return jsonify(msg='Error: {}. '.format(reason)), 404
@@ -68,7 +68,7 @@ def create_customer():
     
     #create customer entry
     cust = User(username=c_username, email=c_email )
-    cust.password_hash=cust.set_password(c_password)
+    cust.password=cust.set_password(c_password)
 
   
     try:
@@ -123,13 +123,13 @@ def update_customer(customername):
     
     #update cust ino
     cust.email=c_email
-    cust.password_hash=cust.set_password(c_password)
+    cust.password=cust.set_password(c_password)
     cust.certs=c_certs
     
     try: 
      db.session.add(cust)
      db.session.commit()
-     return make_response(f" Updated info for {cust.username}: 'email': {cust.email}, 'password': {cust.password_hash}, 'certs': {cust.certs} ")
+     return make_response(f" Updated info for {cust.username}: 'email': {cust.email}, 'password': {cust.password}, 'certs': {cust.certs} ")
     except AssertionError as exception_message: 
       return jsonify(msg='Error: {}. '.format(exception_message)), 400
    
