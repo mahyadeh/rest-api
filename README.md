@@ -56,30 +56,34 @@ There are 2 main types(tables):
  ### 1. Create customer:
        curl  -H "Content-Type: application/json"   -X POST  -d '{"email":"user1@mail.com", "username":"user1", "password":"randomPass1","certs":""}' https://localhost:8443/api/v1/customer
 
- ### 2. View all customers
+
+ ### 2. Get customer:
+       curl  -X GET https://localhost:8443/api/v1/customer/<customername>
+       
+ ### 3. View all customers
      curl  https://localhost:8443/api/v1/customers
 
- ### 3. Delete customer
+ ### 4. Delete customer
      curl  -X DELETE https://localhost:8443/api/v1/customer/<customername>
 
 
- ### 4. Update customer info (only email and password)
+ ### 5. Update customer info (only email and password)
     curl -H "Content-Type: application/json" -d '{"email":"newemail@mail.com", "password":"Newpassword1"}'   -X PUT https://localhost:8443/api/v1/customer/<customername>
 
 
- ### 5. Create certificate (customer must already exist)
+ ### 6. Create certificate (customer must already exist)
     curl -H "Content-Type: application/json"   -X POST  -d '{"status":"active", "privKey":"randomKey", "body":"randomBody"}' https://localhost:8443/api/v1/customer/<customername>/cert
 
- ### 6.  Get all customer certificates (active and deactive)
+ ### 7.  Get all customer certificates (active and deactive)
     curl  https://localhost:8443/api/v1/customer/<customername>/certs
 
- ### 7. Get all customer ACTIVE certificates
+ ### 8. Get all customer ACTIVE certificates
     curl  https://localhost:8443/api/v1/customer/<customername>/certs/active
 
- ### 8. Activate csutomer certificate
+ ### 9. Activate csutomer certificate
     curl -X PUT https://localhost:8443/api/v1/customer/<customername>/certs/activate/<certID>
 
- ### 9. Deactivate customer certificae
+ ### 10. Deactivate customer certificae
     curl -X PUT https://localhost:8443/api/v1/customer/<customername>/certs/deactivate/<certID>            
 
 
