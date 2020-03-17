@@ -61,7 +61,7 @@ There are 2 main types(tables):
        curl  -X GET https://localhost:8443/api/v1/customer/<customername>
        
  ### 3. View all customers
-     curl  https://localhost:8443/api/v1/customers
+     curl -X GET https://localhost:8443/api/v1/customer
 
  ### 4. Delete customer
      curl  -X DELETE https://localhost:8443/api/v1/customer/<customername>
