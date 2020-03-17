@@ -59,7 +59,7 @@ There is a on-to-many relationship from Customer to Certificate
        curl  -H "Content-Type: application/json"   -X POST  -d '{"email":"user1@mail.com", "username":"user1", "password":"randomPass1","certs":""}' localhost:6000/api/v1/customer
 
  ### 2. View all customers
-     curl  localhost:6000/api/v1/customers
+     curl  -X GET localhost:6000/api/v1/customer
 
  ### 3. Delete customer
      curl  -X DELETE localhost:6000/api/v1/customer/<customername>
@@ -73,16 +73,16 @@ There is a on-to-many relationship from Customer to Certificate
     curl -H "Content-Type: application/json"   -X POST  -d '{"status":"active", "privKey":"randomKey", "body":"randomBody"}' localhost:6000/api/v1/customer/<customername>/cert
 
  ### 6.  Get all customer certificates (active and deactive)
-    curl  localhost:6000/api/v1/customer/<customername>/certs
+    curl  localhost:6000/api/v1/customer/<customername>/cert
 
  ### 7. Get all customer ACTIVE certificates
-    curl  localhost:6000/api/v1/customer/<customername>/certs/active
+    curl  localhost:6000/api/v1/customer/<customername>/cert/active
 
  ### 8. Activate csutomer certificate
-    curl -X PUT localhost:6000/api/v1/customer/<customername>/certs/activate/<certID>
+    curl -X PUT localhost:6000/api/v1/customer/<customername>/cert/activate/<certID>
 
  ### 9. Deactivate customer certificae
-    curl -X PUT localhost:6000/api/v1/customer/<customername>/certs/deactivate/<certID>   
+    curl -X PUT localhost:6000/api/v1/customer/<customername>/cert/deactivate/<certID>   
 
 ### Repository Contents
 
