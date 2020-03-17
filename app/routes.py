@@ -26,7 +26,7 @@ def homepage():
 
 
 #get info for all customers in database (password field is hidden)
-@app.route("/api/v1/customers", methods=['GET'])
+@app.route("/api/v1/customer", methods=['GET'])
 @app.errorhandler(404)
 def get_customers():
     
@@ -175,7 +175,7 @@ def create_cert(customername):
 
 
 #Get all (active,deactive) certificates for customer
-@app.route('/api/v1/customer/<string:customername>/certs', methods=['GET'])
+@app.route('/api/v1/customer/<string:customername>/cert', methods=['GET'])
 @app.errorhandler(404)
 def get_certs(customername):
     
@@ -202,7 +202,7 @@ def get_certs(customername):
 
 
 #get all active certificates for customer
-@app.route('/api/v1/customer/<string:customername>/certs/active', methods=['GET'])
+@app.route('/api/v1/customer/<string:customername>/cert/active', methods=['GET'])
 @app.errorhandler(404)
 def get_certs_active(customername):
   try:
@@ -218,7 +218,7 @@ def get_certs_active(customername):
       
 
 #get all deactive certificates for customer
-@app.route('/api/v1/customer/<string:customername>/certs/deactive', methods=['GET'])
+@app.route('/api/v1/customer/<string:customername>/cert/deactive', methods=['GET'])
 @app.errorhandler(404)
 def get_certs_deactive(customername):
   try:
@@ -245,7 +245,7 @@ def notify_external_system(msg):
 
 #Activates a certificate that is deactive. 
 #Notifies external system  about this event
-@app.route('/api/v1/customer/<string:customername>/certs/activate/<int:certid>', methods=['PUT'])
+@app.route('/api/v1/customer/<string:customername>/cert/activate/<int:certid>', methods=['PUT'])
 @app.errorhandler(404)
 def activate_cert(customername,certid):
     
@@ -282,7 +282,7 @@ def activate_cert(customername,certid):
 
 #Deactivates a certificate that is active
 #Notifies external system  about this event
-@app.route('/api/v1/customer/<string:customername>/certs/deactivate/<int:certid>', methods=['PUT'])
+@app.route('/api/v1/customer/<string:customername>/cert/deactivate/<int:certid>', methods=['PUT'])
 def deactivate_cert(customername,certid):
        #verify customer exists
        cust = User.query.filter_by(username=customername).first_or_404()
