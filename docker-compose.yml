@@ -31,3 +31,6 @@ services:
       MYSQL_USER: flask
       MYSQL_PASSWORD: testpassword
 
+#To use docker voolumes
+#volumes:
+#  database-data:
