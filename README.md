@@ -21,7 +21,7 @@ To access:
   curl localhost:6000/api/v1/
 
 ## Data persistence
-- Uses local volume (db-data) to persist database info from the mysql container.
+- Uses local volume (db-data) to persist database info from the mysql container ( for a more permanent setup, we should use docker volumes that will be host independent and easier to share among differnet containers )
 - Data will be persisted in local folder after application is stopped 
 - Application uses host port 6000 ( can change as needed in the docker-compose file)
 
