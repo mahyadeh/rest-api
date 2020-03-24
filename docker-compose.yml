@@ -23,7 +23,7 @@ services:
     image: mysql:5.7
     volumes:
 #        # Mount local directory to the mysql container to persist data
-      - ./db-data:/var/lib/mysql
+      - ./database-data:/var/lib/mysql
     # ports:
     #   - "3306:3306"
     environment:
@@ -41,5 +41,6 @@ services:
     depends_on:
       - app
 
+#To use docker voolumes
 #volumes:
-#  mysql-db:
+#  database-data:
